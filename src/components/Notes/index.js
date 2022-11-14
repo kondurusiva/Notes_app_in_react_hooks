@@ -33,7 +33,7 @@ const Notes = () => {
   const onAdd = event => {
     event.preventDefault()
     const newObject = {
-      id: uuidv4,
+      id: uuidv4(),
       title,
       notes,
     }
@@ -75,12 +75,9 @@ const Notes = () => {
             <BulbDescription>Notes you add will appear here</BulbDescription>
           </BulbContainer>
         ) : (
-          items.map(eachItem => (
-            <NewList key={eachItem.id}>
-              <NoteItem ItemDetails={eachItem} />
-            </NewList>
-          ))
-        )}
+            <NewList>{items.map(eachItem => (
+              <NoteItem key={eachItem.id} ItemDetails={eachItem} />))}
+            </NewList>)}
       </BottomContainer>
     </MainContainer>
   )
